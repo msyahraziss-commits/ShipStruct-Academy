@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#071b2c">
+  <meta name="description" content="Lecturer course notes, lecture slides and revision documents for ShipStruct Academy cadets.">
+  <title>Course Notes | ShipStruct Academy</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="classroom.css">
+  <link rel="stylesheet" href="notes.css">
+</head>
+<body>
+  <header class="top"><a class="brand" href="index.html">⚓ <strong>SHIPSTRUCT</strong> <em>ACADEMY</em></a><nav class="top-actions" aria-label="Course navigation"><a href="index.html">Lessons</a><a href="classroom.html">Classroom</a><span id="notes-identity"></span></nav></header>
+  <main class="main notes-main">
+    <section class="hero notes-hero"><div><div class="eyebrow">YOUR LECTURER'S RESOURCE LIBRARY</div><h1>Course notes</h1><p>Lecture slides, course handouts and revision material, all in one place.</p><div class="stats"><span class="chip">PDF documents</span><span class="chip">PowerPoint slides</span><span class="chip">Word notes</span></div></div><svg class="notes-art" viewBox="0 0 180 160" fill="none" aria-hidden="true"><rect x="56" y="12" width="98" height="126" rx="14" fill="#173c50" stroke="#518193"/><rect x="25" y="30" width="104" height="126" rx="14" fill="#123545" stroke="#45e0c7" stroke-width="2"/><path d="M45 62h64M45 80h64M45 98h40" stroke="#8cbdc7" stroke-width="5" stroke-linecap="round"/><circle cx="117" cy="124" r="27" fill="#45e0c7"/><path d="M105 124h24m-12-12v24" stroke="#06313b" stroke-width="4" stroke-linecap="round"/></svg></section>
+    <div id="notes-status" role="status" aria-live="polite"></div>
+    <div id="notes-content"><div class="card">Loading course notes…</div></div>
+  </main>
+  <dialog id="note-preview" aria-labelledby="preview-title"><div class="preview-top"><h2 id="preview-title">Course note</h2><button type="button" class="btn alt" id="close-preview">Close</button></div><iframe id="preview-frame" title="PDF course note preview"></iframe><p class="subtle">If the PDF cannot be displayed on your device, close this preview and choose Download.</p></dialog>
+  <dialog id="note-edit" aria-labelledby="edit-title"><form id="edit-form"><h2 id="edit-title">Edit course note</h2><input type="hidden" name="id"><label class="field"><span>Title</span><input name="title" required minlength="3" maxlength="120"></label><label class="field"><span>Module</span><select name="module"></select></label><label class="field"><span>Description</span><textarea name="description" maxlength="1500"></textarea></label><label class="publish-choice"><input type="checkbox" name="published"> Available to cadets</label><div class="toolbar"><button type="submit" class="btn">Save changes</button><button type="button" class="btn alt" id="cancel-edit">Cancel</button></div><p id="edit-error" role="alert"></p></form></dialog>
+  <footer class="foot">ShipStruct Academy · Course resources shared by your lecturers.</footer>
+  <script src="config.js"></script>
+  <script type="module" src="notes.js"></script>
+</body>
+</html>

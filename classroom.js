@@ -85,6 +85,7 @@ async function loadIdentity(){
       const {data:p,error:pe}=await supa.from('shipstruct_profiles').select('id,full_name,role,requested_role').eq('id',user.id).single();
       if(pe) throw pe;
       profile=p;
+      if(new URLSearchParams(location.search).get('next')==='notes'){location.replace('notes.html');return;}
       await dashboard();
     } else {profile=null;authPage('login');}
   }catch(err){setMessage(err);user=null;profile=null;authPage('login');}
@@ -98,7 +99,7 @@ async function dashboard(){
       if(error)throw error;
       sessions=data||[];
       view.innerHTML=sectionHeader('Lecturer dashboard','Build assessments, launch live quiz sessions and review cadet results.')+
-      `<div class="toolbar">${button('＋ Create new quiz','new-quiz')}${button('Refresh','refresh','alt')}</div>`+
+      `<div class="toolbar">${button('＋ Create new quiz','new-quiz')}${button('Refresh','refresh','alt')}<a class="btn alt" href="notes.html">Course notes →</a></div>`+
       `<h2>Your examinations</h2>${sessions.length?sessions.map(s=>`<div class="session"><div><h3>${escapeHTML(s.title)}</h3><p>Code ${escapeHTML(s.join_code)} · ${s.duration_minutes} minutes · ${escapeHTML(s.status)}</p></div>${button('Manage →','manage-quiz','alt',`data-id="${s.id}"`)}</div>`).join(''):`<div class="card">No examinations yet. Create your first quiz and share the join code with cadets after starting it.</div>`}`;
     } else {
       const {data,error}=await supa.from('shipstruct_quiz_attempts').select('quiz_id,joined_at,submitted_at,score,total,shipstruct_quizzes(title,status,join_code,started_at,duration_minutes)').eq('cadet_id',user.id).order('joined_at',{ascending:false});
@@ -108,7 +109,7 @@ async function dashboard(){
       view.innerHTML=sectionHeader('Cadet dashboard','Use the quiz code shared by your lecturer. Your results are stored securely with your account.')+
       pending+`<div class="card"><h2>Join a live quiz</h2><form id="joinForm"><label class="field"><span>8-character session code</span><input name="code" type="text" maxlength="8" minlength="8" required placeholder="e.g. A12B34CD" autocapitalize="characters" style="text-transform:uppercase;letter-spacing:3px;font-weight:800"></label><button type="submit" class="btn">Join quiz →</button></form></div>
       <h2>My quiz history</h2>${sessions.length?sessions.map(x=>`<div class="session"><div><h3>${escapeHTML(x.shipstruct_quizzes?.title||'Quiz')}</h3><p>${x.submitted_at?`Submitted · ${x.score}/${x.total} (${Math.round(100*x.score/x.total)}%)`:`Not submitted · ${escapeHTML(x.shipstruct_quizzes?.status||'Unknown status')}`}</p></div>${x.submitted_at?pill('Graded'):button('Resume →','resume-quiz','alt',`data-id="${x.quiz_id}"`)}</div>`).join(''):`<div class="card">No quiz attempts yet. Enter a live session code to get started.</div>`}`+
-      `<div class="toolbar">${button('Refresh account status','refresh','alt')}</div>`;
+      `<div class="toolbar">${button('Refresh account status','refresh','alt')}<a class="btn alt" href="notes.html">Course notes →</a></div>`;
       $('#joinForm').onsubmit=e=>{e.preventDefault();joinQuiz(new FormData(e.target).get('code'));};
     }
   }catch(err){setMessage(err);view.innerHTML=sectionHeader('Connection problem','Unable to load classroom records')+notice(message,'error')+button('Try again','refresh','alt');}
