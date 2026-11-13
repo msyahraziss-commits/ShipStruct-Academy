@@ -75,6 +75,9 @@ async function submitAuth(form,signup){
 async function loadIdentity(){
   if(!supa)return;
   try {
+    const {data:sessionData,error:sessionError}=await supa.auth.getSession();
+    if(sessionError)throw sessionError;
+    if(!sessionData.session){user=null;profile=null;message='';authPage('login');return;}
     const {data,error}=await supa.auth.getUser();
     if(error) throw error;
     user=data.user;
