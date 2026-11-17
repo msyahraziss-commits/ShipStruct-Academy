@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071c29">
+  <meta name="description" content="Adjustable ship motion and hull-effect simulator: roll, pitch, yaw, heave, sway, surge, panting and more.">
+  <title>Motion Lab | ShipStruct Academy</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="games.css">
+  <link rel="stylesheet" href="simulator.css">
+  <script type="module" src="simulator.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to simulator</a>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Academy navigation">
+      <a class="brand" href="index.html#dashboard"><span class="brandmark">S</span><span>SHIPSTRUCT<strong>ACADEMY</strong><small>MARINE LEARNING PLATFORM</small></span></a>
+      <span class="side-label">LEARNING SPACE</span>
+      <nav>
+        <a href="index.html#dashboard"><span aria-hidden="true">⌂</span>Dashboard</a>
+        <a href="index.html#academy"><span aria-hidden="true">▤</span>Learning Academy</a>
+        <a href="index.html#explorer"><span aria-hidden="true">⚓</span>Interactive Ship</a>
+        <a href="simulator.html" class="active" aria-current="page"><span aria-hidden="true">≈</span>Motion Lab <small class="new-label">NEW</small></a>
+        <a href="games.html"><span aria-hidden="true">◈</span>Mini-games</a>
+        <a href="classroom.html"><span aria-hidden="true">▦</span>Classroom</a>
+        <a href="notes.html"><span aria-hidden="true">▱</span>Course notes</a>
+        <a href="index.html#systems"><span aria-hidden="true">▱</span>Structural Systems</a>
+      </nav>
+      <div class="side-note"><span class="eyebrow">SEE IT. CHANGE IT.</span><h3>One ship.<br>Many ways to move.</h3><p>Start with a single motion. Adjust it, pause it, then compare it with the others.</p><a href="games.html">Test yourself in the mini-games →</a></div>
+    </aside>
+    <div class="main-wrap">
+      <header class="topbar"><a href="index.html#dashboard" class="mobile-brand">S<span>SHIPSTRUCT</span></a><div class="breadcrumb"><a href="index.html#dashboard">Academy</a><span>›</span><strong>Motion Lab</strong></div><nav aria-label="Quick links"><a href="games.html">Mini-games</a><a href="classroom.html">Classroom</a><a href="notes.html">Course notes</a></nav><span class="practice-badge">INTERACTIVE LAB</span></header>
+      <main id="main" tabindex="-1"><div id="app"><p class="loading">Preparing the motion lab…</p></div><noscript><p>Enable JavaScript to use the adjustable simulator. <a href="index.html">Return to the Academy</a>.</p></noscript></main>
+      <footer><span>SHIPSTRUCT ACADEMY · LEARN BY OBSERVING</span><a href="#references" id="references-link">Learning references</a></footer>
+    </div>
+  </div>
+  <nav class="mobile-nav" aria-label="Mobile navigation"><a href="index.html#dashboard">Home</a><a href="simulator.html" aria-current="page">Motion Lab</a><a href="games.html">Games</a><a href="classroom.html">Classroom</a><a href="notes.html">Notes</a></nav>
+  <div id="announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>
